@@ -1,9 +1,7 @@
 var rotate = function(nums, k) {
     let len = nums.length;
     k = k % len;
-
-    if (k === 0) return;
-
+    
     nums.reverse();
 
     nums.splice(0, k, ...nums.slice(0, k).reverse());
