@@ -1,14 +1,13 @@
 var canConstruct = function(ransomNote, magazine) {
-    const count = {};
+    const count = new Map();
+
     for (let char of magazine) {
-        count[char] = (count[char] || 0) + 1;
+        count.set(char, (count.get(char) || 0) + 1);
     }
 
     for (let char of ransomNote) {
-        if (!count[char] || count[char] === 0) {
-            return false;
-        }
-        count[char]--;
+        if (!count.get(char)) return false;
+        count.set(char, count.get(char) - 1);
     }
 
     return true;
